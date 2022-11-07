@@ -1,5 +1,7 @@
-FROM node:12.13.0
+FROM node:14.15.0
 EXPOSE 8000
+RUN apt-get update -y
+RUN apt-get install chromium -y
 RUN npm install --quiet -g gatsby-cli
 WORKDIR /app
 COPY ./package.json .
