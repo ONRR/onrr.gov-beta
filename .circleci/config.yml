@@ -163,7 +163,7 @@ jobs:
             curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
             sudo dpkg -i cf-cli_amd64.deb
             cf api https://api.fr.cloud.gov
-            cf login -a api.fr.cloud.gov -u "maroya.faied@onr.gov" -p "$CF_PASSWORDMF"
+            cf login -a api.fr.cloud.gov -u "maroya.faied@onr.gov" -p "$DEV_CF_PASSWORDMF"
             cf target -o "doi-onrr" -s "dev"
             cf app "hasura-sandbox"
             cf install-plugin -f https://github.com/cloud-gov/cf-service-connect/releases/download/1.1.0/cf-service-connect-linux-amd64
@@ -287,7 +287,8 @@ jobs:
           name: "Deploy to cloud.gov"
           command: |
             cd database
-            curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'            sudo dpkg -i cf-cli_amd64.deb
+            curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'            
+            sudo dpkg -i cf-cli_amd64.deb
             cf api https://api.fr.cloud.gov
             echo "$PROD CF_USERNAMEMF"
             cf auth "$PROD_CF_USERNAMEMF" "$PROD_CF_PASSWORDMF"
