@@ -1,12 +1,10 @@
 FROM circleci/node:12.13.0-browsers
 EXPOSE 8000
+WORKDIR /app
+COPY . .
 RUN sudo apt-get update -y
 RUN sudo apt-get install chromium -y
-RUN sudo npm install --quiet -g gatsby-cli
-WORKDIR /app
-COPY ./package.json .
-COPY ./package-lock.json .
+RUN sudo npm install --quiet -g gatsby-cli@2.19.3
 RUN npm install
-COPY . .
-#RUN gatsby clean
-#CMD ["gatsby", "develop", "-H", "0.0.0.0" ]
+RUN gatsby clean
+CMD ["gatsby", "develop", "-H", "0.0.0.0" ]
