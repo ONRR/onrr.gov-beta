@@ -1,10 +1,11 @@
-FROM circleci/node:12.13.0-browsers
+FROM cimg/node:12.22.12-browsers
 EXPOSE 8000
 WORKDIR /app
 COPY . .
 RUN sudo apt-get update -y
-RUN sudo apt-get install chromium -y
-RUN sudo npm install --quiet -g gatsby-cli@2.19.3
+RUN sudo ln -s `which npm` /usr/local/bin/npm
+RUN sudo ln -s `which node` /usr/local/bin/node
+RUN sudo npm install --quiet -g gatsby-cli@3.15.0
 RUN npm install
 RUN gatsby clean
 CMD ["gatsby", "develop", "-H", "0.0.0.0" ]
