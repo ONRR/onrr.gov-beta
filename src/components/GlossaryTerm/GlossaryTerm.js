@@ -36,7 +36,9 @@ const GlossaryTerm = ({ children, termKey, ...rest }) => {
   const styles = useStyles(theme)
   const results = useStaticQuery(graphql`
     query GlossaryTermsQuery {
-      mdx(fileAbsolutePath: {regex: "/content-partials/Glossary/"}) {
+      mdx(internal: {
+        contentFilePath: {regex: "/content-partials/Glossary/"}
+      }) {
         frontmatter {
           terms {
             definition

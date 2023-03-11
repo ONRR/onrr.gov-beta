@@ -70,8 +70,8 @@ const config = {
         // }
       }
     },
-    'gatsby-theme-apollo',
-    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-mdx',
+    'gatsby-plugin-apollo',
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
@@ -110,6 +110,7 @@ const config = {
         path: `${ __dirname }/src/components`
       }
     },
+    'gatsby-plugin-image',
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-sharp',
@@ -146,7 +147,7 @@ const config = {
             title: node => node.frontmatter.title,
             tags: node => node.frontmatter.tag || node.frontmatter.tags,
             description: node => node.frontmatter.description,
-            path: node => node.fields.slug,
+            path: node => node.frontmatter.path,
             glossary: node => node.frontmatter.glossary
           }
         },

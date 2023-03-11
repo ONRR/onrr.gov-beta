@@ -566,9 +566,9 @@ const DataTableBase = ({ data, config }) => {
       updateDataFilter({ [GROUP_BY]: undefined })
     }
   }, [_groupBy, _breakoutBy, config])
-  //    console.debug("Config Data: ", config)
-  //    console.debug("table Data ", tableData, " column names ", columnNames)
-  //    console.debug("Data ", data, " pivot data ", pivotData)
+      console.debug("Config Data: ", config)
+      console.debug("table Data ", tableData, " column names ", columnNames)
+      console.debug("Data ", data, " pivot data ", pivotData)
   return (
     <React.Fragment>
       {(defaultColumnWidths?.length > 0 && tableData?.length > 0)
