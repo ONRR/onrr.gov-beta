@@ -298,7 +298,7 @@ jobs:
     docker:
       # This image has the latest cf-cli as well as zero downtime plugins, if needed.
       - image: cimg/node:14.15.0-browsers
-    resource_class: medium+
+    resource_class: xlarge
     steps:
       - checkout
       - restore_cache:
