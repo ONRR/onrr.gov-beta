@@ -473,6 +473,7 @@ workflows:
                 - dev
       - nrrd-preview:
           context:
+            - org-global
             - nrrd
           requires:
             - sandbox-database
