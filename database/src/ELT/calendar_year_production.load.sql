@@ -87,7 +87,6 @@ select
 	CASE WHEN product is null  then 'ZZZ' 
 	WHEN product like 'Oil%' then '1' 
 	WHEN product like 'Gas%' then '2'
-        WHEN product like 'Coal%' then '5' 
         ELSE substr(product, 1,5) END
 from calendar_year_production_elt
 group by  product
