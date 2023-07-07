@@ -297,7 +297,7 @@ jobs:
   nrrd-preview:
     docker:
       # This image has the latest cf-cli as well as zero downtime plugins, if needed.
-      - image: cimg/node:12.13-browsers
+      - image: cimg/node:12.13.0
     resource_class: medium+
     steps:
       - checkout
