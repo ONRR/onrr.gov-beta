@@ -342,7 +342,7 @@ jobs:
   dev:
     docker:
       - image: cimg/node:12.13-browsers
-    resource_class: medium+
+    resource_class: large
     steps:
       - checkout
       - restore_cache:
