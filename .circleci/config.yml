@@ -1,4 +1,8 @@
 version: 2.1
+parameters:
+  run-sandbox-database:
+    type: boolean
+    default: true
 orbs:
   aws-s3: circleci/aws-s3@2.0.0
 commands:
@@ -463,6 +467,7 @@ workflows:
   preview:
     jobs:
       - sandbox-database:
+          when: << pipeline.parameters.run-sandbox-database >>
           context:
             - org-global
             - nrrd
