@@ -47,7 +47,7 @@
     "gatsby-plugin-google-tagmanager": "^2.11.0",
     "gatsby-plugin-layout": "^1.10.0",
     "gatsby-plugin-manifest": "^2.12.1",
-    "gatsby-plugin-material-ui": "^2.1.8",
+    "gatsby-plugin-material-ui": "^2.1.10",
     "gatsby-plugin-mdx": "^1.10.1",
     "gatsby-plugin-meta-redirect": "^1.1.1",
     "gatsby-plugin-offline": "^3.2.1",
