@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { isEqual, isEqualWith, uniqBy } from 'lodash'
+
+import { DataFilterContext } from '../../../stores'
 
 import Skeleton from '@material-ui/lab/Skeleton'
 import {
@@ -26,7 +28,7 @@ import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown'
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
 
 import { formatToSlug } from '../../../js/utils'
-import { ZERO_OPTIONS } from '../../../constants'
+import { ZERO_OPTIONS, FEDERAL_SALES } from '../../../constants'
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -118,6 +120,9 @@ const BaseSelectInput = ({
   const BaseSingleSelectInput = ({ data, defaultSelected, selected, label, helperText, variant, showClearSelected, theme, onChange, disabled }) => {
     const classes = useStyles()
     const labelSlug = formatToSlug(label)
+    const { state: dataFilterCtx } = useContext(DataFilterContext)
+
+    const isSalesPeriod = label === 'Period' && dataFilterCtx.dataType === FEDERAL_SALES
 
     /**
      * We have multiple ways to specify a default value. It will check to see if a defaultSelected has been specified.
@@ -158,7 +163,7 @@ const BaseSelectInput = ({
     }, [selected])
 
     return (
-      <FormControl variant={variant} className={classes.formControl} disabled={((disabled) || (data && data.length === 0))}>
+      <FormControl variant={variant} className={classes.formControl} disabled={((disabled) || (data && data.length === 0) || isSalesPeriod)}>
         <InputLabel htmlFor={`${ labelSlug }-select-label`}>{label}</InputLabel>
         <Select
           labelId={`${ labelSlug }-select-label`}
