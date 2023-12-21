@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: federal-sales-view
+      id: download-federal-sales-view
       author: Jeff Schwartz
       runOnChange: true
       changes:
