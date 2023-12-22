@@ -12,8 +12,22 @@ SELECT calendar_year "Date",
   TRIM(TO_CHAR(gas_volume, '999G999G999G999G999D99')) "Gas MMBtu Volume",
   CONCAT('$', TRIM(TO_CHAR(sales_value, '999G999G999G999G999D99'))) "Sales Value",
   CONCAT('$', TRIM(TO_CHAR(royalty_value_prior_to_allowance, '999G999G999G999G999D99'))) "Royalty Value Prior to Allowances (RVPA)",
-  REPLACE(TO_CHAR(transportation_allowance, 'MIL999G999G990.99'), ' ', '') "Transportation Allowances (TA)",
-  REPLACE(TO_CHAR(processing_allowance, 'MIL999G999G990.99'), ' ', '') "Processing Allowances (PA)",
+  CASE 
+  WHEN transportation_allowance < 0 THEN
+    CONCAT('-', '$', TRIM(TO_CHAR(ABS(transportation_allowance), '999G999G990.99')))
+  WHEN transportation_allowance > 0 THEN
+    CONCAT('$', TRIM(TO_CHAR(transportation_allowance, '999G999G990.99')))
+  ELSE
+    CONCAT('$', TRIM(TO_CHAR(transportation_allowance, '999G999G990.99')))
+  END "Transportation Allowances (TA)",
+  CASE 
+  WHEN processing_allowance < 0 THEN
+    CONCAT('-', '$', TRIM(TO_CHAR(ABS(processing_allowance), '999G999G990.99')))
+  WHEN processing_allowance > 0 THEN
+    CONCAT('$', TRIM(TO_CHAR(processing_allowance, '999G999G990.99')))
+  ELSE
+    CONCAT('$', TRIM(TO_CHAR(processing_allowance, '999G999G990.99')))
+  END "Processing Allowances (PA)",
   CONCAT('$', TRIM(TO_CHAR(royalty_value_less_allowance, '999G999G999G999G999D99'))) "Royalty Value Less Allowances (RVLA)",
   CONCAT(TRIM(TO_CHAR(effective_royalty_rate * 100, '90D90')), '%') "Effective Royalty Rate"
 FROM sales
