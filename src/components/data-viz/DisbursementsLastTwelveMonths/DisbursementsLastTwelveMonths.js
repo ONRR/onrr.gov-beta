@@ -15,7 +15,7 @@ import { QK_DISBURSEMENTS_COMMON, RECIPIENT } from '../../../constants'
 /**
  * This displays data related to the Disbursements by recipient for the last 12 months
  */
-const DisbursementsLastTwelveMonths = ({ title, yGroupBy, data, disableInteraction, chartHeight, skeletonHeight, ...restProps }) => {
+const DisbursementsLastTwelveMonths = ({ title, yGroupBy, data, disableInteraction, chartHeight, skeletonHeight, svgTitle, ...restProps }) => {
   const ChartContainer = withStyles(() =>
     createStyles({
       root: {
@@ -83,6 +83,7 @@ const DisbursementsLastTwelveMonths = ({ title, yGroupBy, data, disableInteracti
           chartHeight={chartHeight}
           compact={true}
           disableInteraction={disableInteraction}
+          svgTitle={svgTitle}
         />
         : <Skeleton variant="rect" height={skeletonHeight} animation="wave" />
       }
